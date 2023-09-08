@@ -1,0 +1,27 @@
+{
+	"name": "hexdrone-status-codes",
+	"source": "src/index.html",
+	"browserslist": "> 0.5%, last 2 versions, not dead",
+	"private": true,
+	"scripts": {
+		"start": "parcel serve",
+		"build": "parcel build"
+	},
+	"dependencies": {
+		"@chakra-ui/react": "^2.8.0",
+		"@emotion/react": "^11.11.1",
+		"@emotion/styled": "^11.11.0",
+		"@fontsource/inter": "^5.0.8",
+		"framer-motion": "^10.16.4",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-icons": "^4.11.0",
+		"zustand": "^4.4.1"
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.21",
+		"@types/react-dom": "^18.2.7",
+		"parcel": "^2.9.3",
+		"process": "^0.11.10"
+	}
+}
