@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"start": "parcel serve",
-		"build": "parcel build"
+		"build": "parcel build --public-url ."
 	},
 	"dependencies": {
 		"@chakra-ui/react": "^2.8.0",
