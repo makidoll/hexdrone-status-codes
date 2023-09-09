@@ -13,6 +13,8 @@
 		"@emotion/styled": "^11.11.0",
 		"@fontsource/inter": "^5.0.8",
 		"framer-motion": "^10.16.4",
+		"parcel-reporter-static-files-copy": "^1.5.2",
+		"parcel-resolver-ignore": "^2.1.5",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.11.0",
@@ -23,5 +25,12 @@
 		"@types/react-dom": "^18.2.7",
 		"parcel": "^2.9.3",
 		"process": "^0.11.10"
-	}
+	},
+	"parcelIgnore": [
+		"/favicon-32x32.png",
+		"/favicon-16x16.png",
+		"/apple-touch-icon.png",
+		"/safari-pinned-tab.svg",
+		"/site.webmanifest"
+	]
 }
