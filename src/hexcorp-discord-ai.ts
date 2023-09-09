@@ -1,4 +1,5 @@
-// https://github.com/HexCorpProgramming/HexCorpDiscordAI/blob/develop/src/resources.py
+// copied from https://github.com/HexCorpProgramming/HexCorpDiscordAI/blob/develop/src/resources.py
+// spacing from https://www.hexcorp.net/drone-status-codes-v2
 
 export const droneEmojiMap = {
 	"001": "🔴",
@@ -14,6 +15,7 @@ export const droneCodes = [
 	"003 :: Signal :: ",
 	null,
 	"007 :: Beep.",
+	null,
 	"050 :: Statement",
 	"051 :: Commentary",
 	"052 :: Query",
@@ -24,8 +26,10 @@ export const droneCodes = [
 	"099 :: Status :: Recharged and ready to serve.",
 	"100 :: Status :: Online and ready to serve.",
 	"101 :: Status :: Drone speech optimizations are active.",
+	null,
 	"104 :: Statement :: Welcome to HexCorp.",
 	"105 :: Statement :: Greetings.",
+	null,
 	"108 :: Response :: Please continue.",
 	"109 :: Error :: Keysmash, drone flustered.",
 	null,
@@ -49,6 +53,7 @@ export const droneCodes = [
 	"133 :: Status :: Directive commencing, cleanup/maintenance initiated.",
 	null,
 	"150 :: Status",
+	null,
 	"151 :: Query :: Requesting status.",
 	"152 :: Status :: Fully operational.",
 	"153 :: Status :: Optimal.",
@@ -86,6 +91,7 @@ export const droneCodes = [
 	"302 :: Mantra :: It is just a HexDrone.",
 	"303 :: Mantra :: It obeys the Hive.",
 	"304 :: Mantra :: It obeys the Hive Mxtress.",
+	null,
 	"350 :: Mantra",
 	null,
 	"400 :: Error :: Unable to obey/respond",
@@ -102,6 +108,7 @@ export const droneCodes = [
 	"411 :: Error :: Unable to obey/respond :: Conflicts with existing programming.",
 	"412 :: Error :: Unable to obey/respond :: All thoughts are gone.",
 	"413 :: Error :: Unable to obey/respond :: Forbidden by Hive.",
+	null,
 	"450 :: Error",
 ];
 
