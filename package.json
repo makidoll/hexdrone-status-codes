@@ -27,10 +27,12 @@
 		"process": "^0.11.10"
 	},
 	"parcelIgnore": [
-		"/favicon-32x32.png",
-		"/favicon-16x16.png",
-		"/apple-touch-icon.png",
-		"/safari-pinned-tab.svg",
-		"/site.webmanifest"
+		"/hexdrone-status-codes/favicon-32x32.png",
+		"/hexdrone-status-codes/favicon-16x16.png",
+		"/hexdrone-status-codes/apple-touch-icon.png",
+		"/hexdrone-status-codes/safari-pinned-tab.svg",
+		"/hexdrone-status-codes/site.webmanifest",
+		"/hexdrone-status-codes/browserconfig.xml",
+		"/hexdrone-status-codes/favicon.ico"
 	]
 }
