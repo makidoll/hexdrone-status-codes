@@ -12,6 +12,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
+// TODO: flashes on load, maybe ssr related
+
 if (globalThis.localStorage != null) {
 	globalThis.localStorage.setItem("chakra-ui-color-mode", "dark");
 }

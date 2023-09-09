@@ -129,7 +129,31 @@ const diacritics = new Array(0x6f).fill(null).map((_, i) => 0x0300 + i);
 
 const MAX_DIACRITICS_PER_CHAR = 1;
 
-export function droneGlitchText(message: string, glitchAmount = 0.45) {
+// https://github.com/HexCorpProgramming/HexCorpDiscordAI/blob/701f2e232593f8dca1322e5c0fcbf4105ff176d2/src/ai/battery.py
+
+export enum DroneBattery {
+	Low = 15,
+	Mid = 50,
+	Full = 100,
+}
+
+// framer-motion has clamp too
+export const makiClamp = (min: number, max: number, num: number) =>
+	Math.min(Math.max(num, min), max);
+
+export function droneGlitchText(
+	message: string,
+	batteryPercentage: number,
+): string {
+	if (batteryPercentage == 100) {
+		return message;
+	}
+
+	const batteryAmount = makiClamp(0, 100, batteryPercentage) / 100;
+	const glitchAmount = Math.pow(1 - batteryAmount, 4);
+
+	// glitch text
+
 	let characters = message.split("");
 
 	const maxCharacterToGlitch = Math.ceil(characters.length * glitchAmount);
