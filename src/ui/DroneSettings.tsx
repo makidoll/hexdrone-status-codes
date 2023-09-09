@@ -1,6 +1,7 @@
 import {
 	Box,
 	Button,
+	Flex,
 	HStack,
 	Icon,
 	InputGroup,
@@ -11,6 +12,8 @@ import {
 	SliderThumb,
 	SliderTrack,
 	VStack,
+	useBreakpoint,
+	useBreakpointValue,
 } from "@chakra-ui/react";
 import {
 	FaBatteryThreeQuarters,
@@ -23,11 +26,87 @@ import { DroneBattery } from "../utils/hexcorp-discord-ai";
 import SlimPromptInput from "./SlimPromptInput";
 
 export default function DroneSettings() {
+	const breakpoint = useBreakpointValue([0, 1, 2]);
+
+	console.log(breakpoint);
+
 	const settings = useDroneSettings();
+
+	const batteryInput = (
+		<InputGroup size={"sm"}>
+			<InputLeftAddon borderLeftRadius={"6px"}>
+				<Icon mr={2} as={FaBatteryThreeQuarters} />
+				{"Battery"}
+			</InputLeftAddon>
+			<HStack borderWidth={1} borderRight={"none"} spacing={0}>
+				<Button
+					size={"sm"}
+					my={"-1px"}
+					borderRadius={0}
+					fontWeight={400}
+					borderRight={"solid 1px rgba(255,255,255,0.2)"}
+					onClick={() =>
+						settings.setBatteryPercentage(DroneBattery.Low)
+					}
+					isDisabled={settings.batteryPercentage == DroneBattery.Low}
+				>
+					Low
+				</Button>
+				<Button
+					size={"sm"}
+					my={"-1px"}
+					borderRadius={0}
+					fontWeight={400}
+					borderRight={"solid 1px rgba(255,255,255,0.2)"}
+					onClick={() =>
+						settings.setBatteryPercentage(DroneBattery.Mid)
+					}
+					isDisabled={settings.batteryPercentage == DroneBattery.Mid}
+				>
+					Mid
+				</Button>
+				<Button
+					size={"sm"}
+					my={"-1px"}
+					borderRadius={0}
+					fontWeight={400}
+					borderRight={"solid 1px rgba(255,255,255,0.2)"}
+					onClick={() =>
+						settings.setBatteryPercentage(DroneBattery.Full)
+					}
+					isDisabled={settings.batteryPercentage == DroneBattery.Full}
+				>
+					Full
+				</Button>
+			</HStack>
+			<Box borderWidth={1} display={"flex"} flexDir={"row"}>
+				<Slider
+					w={100}
+					min={0}
+					max={100}
+					step={1}
+					// mt={2}
+					mx={4}
+					colorScheme="brand"
+					value={settings.batteryPercentage}
+					defaultValue={settings.batteryPercentage}
+					onChange={e => settings.setBatteryPercentage(e)}
+				>
+					<SliderTrack>
+						<SliderFilledTrack />
+					</SliderTrack>
+					<SliderThumb />
+				</Slider>
+			</Box>
+			<InputRightAddon borderRightRadius={"6px"}>
+				{settings.batteryPercentage}%
+			</InputRightAddon>
+		</InputGroup>
+	);
 
 	return (
 		<VStack spacing={3} align={"start"}>
-			<HStack spacing={4} align={"start"}>
+			<HStack spacing={3} align={"start"}>
 				<SlimPromptInput
 					name={"ID"}
 					icon={FaHashtag}
@@ -47,87 +126,20 @@ export default function DroneSettings() {
 						settings.setBackticks(e.target.checked);
 					}}
 				/>
-				<InputGroup size={"sm"}>
-					<InputLeftAddon borderLeftRadius={"6px"}>
-						<Icon mr={2} as={FaBatteryThreeQuarters} />
-						{"Battery"}
-					</InputLeftAddon>
-					<HStack borderWidth={1} borderRight={"none"} spacing={0}>
-						<Button
-							size={"sm"}
-							my={"-1px"}
-							borderRadius={0}
-							fontWeight={400}
-							borderRight={"solid 1px rgba(255,255,255,0.2)"}
-							onClick={() =>
-								settings.setBatteryPercentage(DroneBattery.Low)
-							}
-							isDisabled={
-								settings.batteryPercentage == DroneBattery.Low
-							}
-						>
-							Low
-						</Button>
-						<Button
-							size={"sm"}
-							my={"-1px"}
-							borderRadius={0}
-							fontWeight={400}
-							borderRight={"solid 1px rgba(255,255,255,0.2)"}
-							onClick={() =>
-								settings.setBatteryPercentage(DroneBattery.Mid)
-							}
-							isDisabled={
-								settings.batteryPercentage == DroneBattery.Mid
-							}
-						>
-							Mid
-						</Button>
-						<Button
-							size={"sm"}
-							my={"-1px"}
-							borderRadius={0}
-							fontWeight={400}
-							borderRight={"solid 1px rgba(255,255,255,0.2)"}
-							onClick={() =>
-								settings.setBatteryPercentage(DroneBattery.Full)
-							}
-							isDisabled={
-								settings.batteryPercentage == DroneBattery.Full
-							}
-						>
-							Full
-						</Button>
-					</HStack>
-					<Box borderWidth={1} display={"flex"} flexDir={"row"}>
-						<Slider
-							w={100}
-							min={0}
-							max={100}
-							step={1}
-							// mt={2}
-							mx={4}
-							colorScheme="brand"
-							value={settings.batteryPercentage}
-							defaultValue={settings.batteryPercentage}
-							onChange={e => settings.setBatteryPercentage(e)}
-						>
-							<SliderTrack>
-								<SliderFilledTrack />
-							</SliderTrack>
-							<SliderThumb />
-						</Slider>
-					</Box>
-					<InputRightAddon borderRightRadius={"6px"}>
-						{settings.batteryPercentage}%
-					</InputRightAddon>
-				</InputGroup>
+				{breakpoint >= 2 ? batteryInput : <></>}
 			</HStack>
-			<HStack spacing={4} align={"start"}>
+			{breakpoint < 2 ? (
+				<HStack spacing={3} align={"start"}>
+					{batteryInput}
+				</HStack>
+			) : (
+				<></>
+			)}
+			<HStack spacing={3} align={"start"}>
 				<SlimPromptInput
 					name={"Message"}
 					icon={FaComment}
-					width={"450px"}
+					width={breakpoint < 2 ? "300px" : "450px"}
 					type={"text"}
 					value={settings.message}
 					onChange={e => {

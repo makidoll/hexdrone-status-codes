@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Link, Text } from "@chakra-ui/layout";
-import { useToast } from "@chakra-ui/react";
+import { useBreakpointValue, useToast } from "@chakra-ui/react";
 import { useDroneSettings } from "./store/DroneSettingsStore";
 import DroneSettings from "./ui/DroneSettings";
 import {
@@ -10,8 +10,8 @@ import {
 
 export default function App() {
 	const settings = useDroneSettings();
-
 	const toast = useToast();
+	const breakpoint = useBreakpointValue([0, 1, 2]);
 
 	let droneCodesTempIndex = -1;
 
@@ -32,7 +32,7 @@ export default function App() {
 			>
 				<DroneSettings />
 			</Box>
-			<Flex p="8" mt={100} flexDir={"column"}>
+			<Flex p="8" mt={breakpoint < 2 ? 150 : 100} flexDir={"column"}>
 				<Heading mb={2}>⬡-Drone Status Codes</Heading>
 				<Text>
 					Find more at{" "}
