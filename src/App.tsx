@@ -32,20 +32,23 @@ export default function App() {
 			>
 				<DroneSettings />
 			</Box>
-			<Flex p="8" mt={breakpoint < 2 ? 150 : 100} flexDir={"column"}>
-				<Heading mb={2}>⬡-Drone Status Codes</Heading>
+			<Flex
+				p={breakpoint < 2 ? 3 : 6}
+				mt={breakpoint < 2 ? 150 : 100}
+				flexDir={"column"}
+			>
+				<Heading mb={1}>⬡-Drone Status Codes</Heading>
 				<Text>
 					Find more at{" "}
 					<Link href="https://hexcorp.net">https://hexcorp.net</Link>
 				</Text>
-				<Text mb={2}>
+				<Text mb={1}>
 					Made by{" "}
 					<Link href="https://makidrone.io">
 						https://makidrone.io
 					</Link>
 				</Text>
-
-				<Flex mt={8} flexDir={"column"} alignItems={"start"}>
+				<Flex mt={6} flexDir={"column"} alignItems={"start"}>
 					{droneCodes.map((text, i) => {
 						if (text == null) {
 							droneCodesTempIndex = -1;
